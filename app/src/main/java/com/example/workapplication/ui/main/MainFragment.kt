@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.example.workapplication.R
+import com.example.workapplication.ui.list.ListFragment
 
 class MainFragment : Fragment() {
 
@@ -26,6 +28,15 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
+        val button = view.findViewById<Button>(R.id.logInButton)
+
+        button.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.container, ListFragment.newInstance())
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
 }
