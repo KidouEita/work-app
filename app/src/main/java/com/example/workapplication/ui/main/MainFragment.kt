@@ -1,14 +1,18 @@
 package com.example.workapplication.ui.main
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.ProgressBar
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.workapplication.R
+import com.example.workapplication.api.FetchResult
 import com.example.workapplication.ui.list.ListFragment
+import com.google.android.material.snackbar.Snackbar
 
 class MainFragment : Fragment() {
 
@@ -30,12 +34,31 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         val button = view.findViewById<Button>(R.id.logInButton)
+        val usernameEdit = view.findViewById<EditText>(R.id.usernameEdit)
+        val passwordEdit = view.findViewById<EditText>(R.id.passwordEdit)
+        val progressBar = view.findViewById<ProgressBar>(R.id.progressMain)
 
         button.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.container, ListFragment.newInstance())
-                .addToBackStack(null)
-                .commit()
+            viewModel.tryLogin(usernameEdit.text.toString(), passwordEdit.text.toString())
+            progressBar.visibility = View.VISIBLE
+            button.visibility = View.INVISIBLE
+        }
+
+        viewModel.userInfo.observe(viewLifecycleOwner) {
+            when(it) {
+                is FetchResult.Success -> {
+                    progressBar.visibility = View.GONE
+                    button.visibility = View.VISIBLE
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, ListFragment.newInstance())
+                        .commit()
+                }
+                is FetchResult.Error -> {
+                    progressBar.visibility = View.GONE
+                    button.visibility = View.VISIBLE
+                    Snackbar.make(view, it.exception.message.toString(), Snackbar.LENGTH_LONG).show()
+                }
+            }
         }
     }
 

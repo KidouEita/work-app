@@ -4,14 +4,17 @@ import com.example.workapplication.BuildConfig
 import com.example.workapplication.api.model.User
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.POST
-import retrofit2.http.PUT
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface UserService {
 
+    @FormUrlEncoded
+    @Headers("X-Parse-Application-Id:vqYuKPOkLQLYHhk4QTGsGKFwATT4mBIGREI2m8eD")
     @POST("login")
-    suspend fun login(): User
+    suspend fun login(
+        @Field("username") username: String = "",
+        @Field("password") password: String = ""
+    ): User
 
     @PUT("users/{userObjectId}")
     suspend fun editUser(@Path("userObjectId") objectId: String)
