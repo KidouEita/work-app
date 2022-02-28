@@ -15,31 +15,26 @@
         android:paddingVertical="8dp">
 
         <TextView
+            android:id="@+id/textMsg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="02/26 18:15 忠孝橋往三重壅塞，請改道" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="2022-02-26 18:15:25" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="2022-02-27 18:15:25" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="2022-02-26 18:15:25" />
-
-        <TextView
+            android:id="@+id/textContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="02/26 18:15 忠孝橋往三重壅塞，請改道" />
 
         <TextView
+            android:id="@+id/textUpdatedTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="2022-02-26 18:15:25" />
+
+        <TextView
+            android:textSize="24sp"
+            android:id="@+id/moreLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
