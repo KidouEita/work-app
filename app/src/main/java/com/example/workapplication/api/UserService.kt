@@ -16,8 +16,12 @@ interface UserService {
         @Field("password") password: String = ""
     ): User
 
+    @Headers("X-Parse-Application-Id:vqYuKPOkLQLYHhk4QTGsGKFwATT4mBIGREI2m8eD")
     @PUT("users/{userObjectId}")
-    suspend fun editUser(@Path("userObjectId") objectId: String)
+    suspend fun editUser(
+        @Header("X-Parse-Session-Token") token: String,
+        @Path("userObjectId") objectId: String
+    )
 
     companion object {
         fun create(): UserService {

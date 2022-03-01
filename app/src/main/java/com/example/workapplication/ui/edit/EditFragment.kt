@@ -3,6 +3,7 @@ package com.example.workapplication.ui.edit
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.workapplication.R
@@ -31,6 +32,8 @@ class EditFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(EditViewModel::class.java)
 
+        val emailText = view.findViewById<TextView>(R.id.emailText)
+        emailText.text = "Email: ${viewModel.username}"
 
     }
 

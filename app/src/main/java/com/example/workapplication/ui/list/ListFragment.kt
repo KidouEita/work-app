@@ -11,7 +11,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.workapplication.R
-import com.example.workapplication.api.FetchResult
+import com.example.workapplication.utils.FetchResult
 import com.example.workapplication.ui.edit.EditFragment
 
 class ListFragment : Fragment() {

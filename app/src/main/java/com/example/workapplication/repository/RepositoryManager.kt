@@ -1,4 +1,4 @@
-package com.example.workapplication.api
+package com.example.workapplication.repository
 
 object RepositoryManager {
 

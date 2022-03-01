@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.workapplication.api.FetchResult
-import com.example.workapplication.api.RepositoryManager
+import com.example.workapplication.utils.FetchResult
+import com.example.workapplication.repository.RepositoryManager
 import com.example.workapplication.api.model.User
 import kotlinx.coroutines.launch
 

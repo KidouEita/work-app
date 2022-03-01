@@ -1,8 +1,10 @@
-package com.example.workapplication.api
+package com.example.workapplication.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.workapplication.api.NewsService
 import com.example.workapplication.api.model.NewsObj
+import com.example.workapplication.utils.FetchResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.lang.Exception

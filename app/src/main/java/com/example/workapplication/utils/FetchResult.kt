@@ -1,4 +1,4 @@
-package com.example.workapplication.api
+package com.example.workapplication.utils
 
 sealed class FetchResult<T> {
     data class Success<T>(val value: T) : FetchResult<T>()

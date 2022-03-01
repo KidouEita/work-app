@@ -10,7 +10,7 @@ import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.workapplication.R
-import com.example.workapplication.api.FetchResult
+import com.example.workapplication.utils.FetchResult
 import com.example.workapplication.ui.list.ListFragment
 import com.google.android.material.snackbar.Snackbar
 

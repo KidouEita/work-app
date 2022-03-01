@@ -1,7 +1,8 @@
-package com.example.workapplication
+package com.example.workapplication.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.workapplication.R
 import com.example.workapplication.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {

@@ -1,7 +1,14 @@
 package com.example.workapplication.ui.edit
 
 import androidx.lifecycle.ViewModel
+import com.example.workapplication.repository.RepositoryManager
 
 class EditViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+
+    private val repository by lazy { RepositoryManager.userRepository }
+
+    val username get() = repository.username
+
+
+
 }
