@@ -1,6 +1,7 @@
 package com.example.workapplication.api
 
 import com.example.workapplication.BuildConfig
+import com.example.workapplication.api.model.Timezone
 import com.example.workapplication.api.model.User
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,9 +19,10 @@ interface UserService {
 
     @Headers("X-Parse-Application-Id:vqYuKPOkLQLYHhk4QTGsGKFwATT4mBIGREI2m8eD")
     @PUT("users/{userObjectId}")
-    suspend fun editUser(
+    suspend fun editTimezone(
         @Header("X-Parse-Session-Token") token: String,
-        @Path("userObjectId") objectId: String
+        @Path("userObjectId") objectId: String,
+        @Body timezone: Timezone
     )
 
     companion object {

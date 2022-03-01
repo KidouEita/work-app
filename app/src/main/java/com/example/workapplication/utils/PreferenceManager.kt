@@ -21,10 +21,16 @@ object PreferenceManager {
             sharePref.edit().putString("objectId", value).apply()
         }
 
-    var token:String?
+    var token: String?
         get() = sharePref.getString("token", null)
         set(value) {
             sharePref.edit().putString("token", value).apply()
+        }
+
+    var timezone: Int
+        get() = sharePref.getInt("timezone", 8)
+        set(value) {
+            sharePref.edit().putInt("timezone", value).apply()
         }
 
 }
