@@ -10,8 +10,9 @@ import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.workapplication.R
-import com.example.workapplication.utils.FetchResult
 import com.example.workapplication.ui.list.ListFragment
+import com.example.workapplication.utils.FetchResult
+import com.example.workapplication.utils.FormatChecker.isValidEmail
 import com.google.android.material.snackbar.Snackbar
 
 class MainFragment : Fragment() {
@@ -39,13 +40,15 @@ class MainFragment : Fragment() {
         val progressBar = view.findViewById<ProgressBar>(R.id.progressMain)
 
         button.setOnClickListener {
-            viewModel.tryLogin(usernameEdit.text.toString(), passwordEdit.text.toString())
-            progressBar.visibility = View.VISIBLE
-            button.visibility = View.INVISIBLE
+            if (usernameEdit.text.toString().isValidEmail()) {
+                viewModel.tryLogin(usernameEdit.text.toString(), passwordEdit.text.toString())
+                progressBar.visibility = View.VISIBLE
+                button.visibility = View.INVISIBLE
+            } else Snackbar.make(view, "帳號格式有誤", Snackbar.LENGTH_LONG).show()
         }
 
         viewModel.userInfo.observe(viewLifecycleOwner) {
-            when(it) {
+            when (it) {
                 is FetchResult.Success -> {
                     progressBar.visibility = View.GONE
                     button.visibility = View.VISIBLE
@@ -56,7 +59,8 @@ class MainFragment : Fragment() {
                 is FetchResult.Error -> {
                     progressBar.visibility = View.GONE
                     button.visibility = View.VISIBLE
-                    Snackbar.make(view, it.exception.message.toString(), Snackbar.LENGTH_LONG).show()
+                    Snackbar.make(view, it.exception.message.toString(), Snackbar.LENGTH_LONG)
+                        .show()
                 }
             }
         }
