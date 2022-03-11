@@ -9,8 +9,8 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.workapplication.R
-import com.example.workapplication.ui.list.ListFragment
 import com.example.workapplication.utils.FetchResult
 import com.example.workapplication.utils.FormatChecker.isValidEmail
 import com.google.android.material.snackbar.Snackbar
@@ -52,9 +52,7 @@ class MainFragment : Fragment() {
                 is FetchResult.Success -> {
                     progressBar.visibility = View.GONE
                     button.visibility = View.VISIBLE
-                    requireActivity().supportFragmentManager.beginTransaction()
-                        .replace(R.id.container, ListFragment.newInstance())
-                        .commit()
+                    findNavController().navigate(R.id.action_mainFragment_to_listFragment)
                 }
                 is FetchResult.Error -> {
                     progressBar.visibility = View.GONE

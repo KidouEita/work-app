@@ -2,17 +2,17 @@ package com.example.workapplication.ui.list
 
 import android.content.Intent
 import android.net.Uri
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.workapplication.R
 import com.example.workapplication.utils.FetchResult
-import com.example.workapplication.ui.edit.EditFragment
 
 class ListFragment : Fragment() {
 
@@ -48,10 +48,7 @@ class ListFragment : Fragment() {
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.action_timezone -> {
-                    requireActivity().supportFragmentManager.beginTransaction()
-                        .replace(R.id.container, EditFragment.newInstance())
-                        .addToBackStack(null)
-                        .commit()
+                    findNavController().navigate(R.id.action_listFragment_to_editFragment)
                     true
                 }
                 else -> false
